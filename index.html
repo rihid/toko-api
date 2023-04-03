@@ -59,16 +59,16 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" x-data="getData()" x-init="fromApi()">
-                    <template x-for="product in prodDatas" :key="product.id">
+                    <template x-for="product in prodDatas" :key="product.ID">
                         <div class="col mb-5">
                             <div class="card h-100">
                                 <!-- Product image-->
-                                <img class="card-img-top" :src="product.images[0]" alt="..." />
+                                <img class="card-img-top" src="" alt="Gambar" />
                                 <!-- Product details-->
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <h5 class="fw-bolder" x-text="product.title">Fancy Product</h5>
+                                        <h5 class="fw-bolder" x-text="product.name">Fancy Product</h5>
                                         <!-- Product price-->
                                         <span x-text="`Rp.${product.price}`">
                                             
