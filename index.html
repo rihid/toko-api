@@ -14,9 +14,12 @@
         <link href="css/styles.css" rel="stylesheet" />
         <!-- Alpine JS CDN -->
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <!-- Axios -->
         <script src="./js/axios.min.js"></script>
+        <!-- Router -->
+        <script src="https://cdn.jsdelivr.net/npm/pinecone-router@2.x.x/dist/router.min.js"></script>
     </head>
-    <body>
+    <body>  
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -58,31 +61,39 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" x-data="getData()" x-init="fromApi()">
-                    <template x-for="product in prodDatas" :key="product.ID">
-                        <div class="col mb-5">
-                            <div class="card h-100">
-                                <!-- Product image-->
-                                <img class="card-img-top" src="" alt="Gambar" />
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="text-center">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder" x-text="product.name">Fancy Product</h5>
-                                        <!-- Product price-->
-                                        <span x-text="`Rp.${product.price}`">
-                                            
-                                        </span>
-                                            
+                <div x-data="{page: location.hash}" @hashchange.window="page = location.hash">
+
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" x-data="getData()" x-init="fromApi()">
+                        <template x-for="product in prodDatas" :key="product.ID">
+                            
+                                <div class="col mb-5" x-show="page === ''">
+                                    <div class="card h-100">
+                                        <!-- Product image-->
+                                        <img class="card-img-top" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar" />
+                                        <!-- Product details-->
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <!-- Product name-->
+                                                <h5 class="fw-bolder" x-text="product.name">Fancy Product</h5>
+                                                <!-- Product price-->
+                                                <span x-text="`Rp.${product.price}`">
+                                                    
+                                                </span>
+                                                    
+                                            </div>
+                                        </div>
+                                        <!-- Product actions-->
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="detailProd(product)">
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="">Detail</a></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
+                        </template>
+                    </div>
+                    <div x-show="page === '#product'" id="detail">
+                        <!-- single product -->
+
+                    </div>
                 </div>
             </div>
         </section>
