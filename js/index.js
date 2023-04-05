@@ -20,15 +20,37 @@ function getData(){
     }
 }
 
-// Detail
+// Detail ke halaman ./single.html
+
+let prodId = new URLSearchParams(location.search).get('id')
+function getDetail(id){
+    return api.get(`product/${id}`)
+        .then(res =>{
+            $('#title').text(res.data.data.name)
+            $('#price').text(res.data.data.price)
+            $('#desc').text(res.data.data.description)
+            // return res.data.data
+            // console.log(res.data.data)
+        })
+}
+
+
+
+/*
 function detailProd(product){
     location.href = `#product-${product.ID}`;
    $('#detail').attr('x-show', `page === '#product-${product.ID}'`);
    $('#prod-name').text(`${product.name}`)
    $('#price').text(`${product.price}`)
    $('#desc').text(`${product.description}`)
+
+   $('#cart-btn').on('click', function(evt){
+    evt.preventDefault()
+    console.log(evt)
+   })
     
 }
+*/
 
 
 // api.get('products/')
