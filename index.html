@@ -16,8 +16,6 @@
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <!-- Axios -->
         <script src="./js/axios.min.js"></script>
-        <!-- Router -->
-        <script src="https://cdn.jsdelivr.net/npm/pinecone-router@2.x.x/dist/router.min.js"></script>
     </head>
     <body>  
         <!-- Navigation-->
@@ -91,8 +89,29 @@
                         </template>
                     </div>
                     <div x-show="page === '#product'" id="detail">
-                        <!-- single product -->
-
+                        	<!-- single product -->
+                            <div class="single-product mt-150 mb-150">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div>
+                                                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar Produk" class="img-thumbnail">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="single-product-content">
+                                                <h3 id="prod-name"></h3>
+                                                <p id="price"></p>
+                                                <p id="desc"></p>
+                                                <div>
+                                                    <button class="cart-btn btn btn-success mt-2 mb-3" type="button" id="add-button" value="{{product.id}}"><i class="fas fa-shopping-cart"></i> Keranjang</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end single product -->
                     </div>
                 </div>
             </div>
