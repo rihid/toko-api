@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class="navbar-brand" href="./index.html">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -29,7 +29,7 @@
                         <li class="nav-item"><a class="nav-link" href="./profil.html">Profile</a></li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button class="btn btn-outline-dark" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
@@ -38,24 +38,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                ...
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-            </div>
-        </div>
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -67,63 +49,69 @@
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div x-data="{page: location.hash}" @hashchange.window="page = location.hash">
-
-                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" x-data="getData()" x-init="fromApi()">
-                        <template x-for="product in prodDatas" :key="product.ID">
-                            
-                                <div class="col mb-5" x-show="page === ''">
-                                    <div class="card h-100">
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar" />
-                                        <!-- Product details-->
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder" x-text="product.name">Fancy Product</h5>
-                                                <!-- Product price-->
-                                                <span x-text="`Rp.${product.price}`">
-                                                    
-                                                </span>
-                                                    
-                                            </div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="detailProd(product)">
-                                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="">Detail</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </template>
-                    </div>
-                    <div x-show="page === '#product'" id="detail">
-                        	<!-- single product -->
-                            <div class="single-product mt-150 mb-150">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div>
-                                                <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar Produk" class="img-thumbnail">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <div class="single-product-content">
-                                                <h3 id="prod-name"></h3>
-                                                <p id="price"></p>
-                                                <p id="desc"></p>
-                                                <div id="cart-btn">
-                                                    <button type="button" class="btn btn-outline-primary mt-2 mb-3">Keranjang</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="container my-5">
+                <div class="row"> 
+                  <div class="col-lg-9">
+                    <div class="card">
+                      <div class="card-body"> 
+                        <h5 class="card-title mb-4">Keranjang</h5> 
+                        <div class="card mb-4 border-0 product-item" data-index="{{product.id}}">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="itemside me-lg-5 d-flex flex-row"> 
+                                <div class="aside">
+                                  <img src="" class="img-sm border rounded">
+                                </div> 
+                                <div class="info"> 
+                                  <a href="" class="title mb-1">Nama Produk</a> 
+                                  <p class="text-muted small">Deskripsi</p> 
+                                </div> 
+                              </div>
+                            </div> 
+                            <div class="col-lg-4 col-sm-4 col-6"> 
+                              <div class="price-wrap lh-sm"> 
+                                <var class="price h6">harga</var> 
+                              </div> <!-- price-wrap .// --> 
+                            </div> 
+                            <div class="col-lg col-sm-4">
+                              <div class="card-body p-1">
+                                <!-- <label for="select" class="d-none">Qty</label> -->
+                                <select id="select{{product.id}}" class="d-none">
+                                  <option value="" selected disabled hidden>{{item.qty}}</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                </select>
+                                <a type="button" id="delete-button" data-index="{{product.id}}"
+                                  class="delete-button text-decoration-none small"><i class="fas fa-trash-alt"></i></a>
+                              </div>
                             </div>
-                            <!-- end single product -->
-                    </div>
+                          </div>
+                        </div>
+                      </div> <!-- card-body .// -->
+                      <div class="card-body border-top"> 
+                        <p class="mb-0"><i class="me-2 text-success fa fa-truck"></i> Pengiriman ke manapun</p>
+                      </div> <!-- card-body.// -->
+                    </div> <!-- card.// --> 
+                  </div> <!-- col.// --> 
+                  
+                  <aside class="col-lg-3"> 
+                    <div class="card"> 
+                      <div class="card-body"> 
+                        <div class="alert alert-warning" role="alert">
+                          <span class="mr-1"><i class="fas fa-info-circle"></i></span>
+                          Setelah menekan tombol pesan, anda akan diarahkan ke Whatsapp dan akan dilayani admin untuk detail pemesanan selanjutnya.
+                        </div> 
+                        <hr> 
+                        <div class="d-grid gap-2 my-3"> 
+                          <a href="#" class="btn btn-success w-100 mb-2"> Pesan Melalui Whatsapp </a> 
+                          <a href="#" class="btn btn-light w-100"> Kembali Ke Produk </a> 
+                        </div> 
+                      </div> <!-- card-body.// --> 
+                    </div> <!-- card.// --> 
+                  </aside> <!-- col.// -->
+                 
                 </div>
-            </div>
+              </div>              
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
