@@ -7,7 +7,7 @@ const api = axios.create({
     baseURL: "http://127.0.0.1:8080"
 });
 
-// Get
+// Get all data
 function getData(){
     return{
         prodDatas: [],
@@ -21,7 +21,6 @@ function getData(){
 }
 
 // Detail ke halaman ./single.html
-
 let prodId = new URLSearchParams(location.search).get('id')
 function getDetail(id){
     return api.get(`product/${id}`)
@@ -34,6 +33,11 @@ function getDetail(id){
         })
 }
 
+// Get Profile
+api.get('costumer/1')
+    .then(res =>{
+        console.log(res.data.data)
+    })
 
 
 /*
@@ -51,9 +55,3 @@ function detailProd(product){
     
 }
 */
-
-
-// api.get('products/')
-//     .then(res =>{
-//         console.log(res.data.products)
-//     })
