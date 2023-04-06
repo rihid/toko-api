@@ -52,7 +52,7 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <!-- single product -->
-                    <div class="single-product mt-150 mb-150" x-data="getDetail(prodId)">
+                    <div class="single-product mt-150 mb-150" x-data="getDetail()" x-init="apiGet(prodId)">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-5">
@@ -62,23 +62,13 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="single-product-content">
-                                        <h3 id="title">Judul</h3>
-                                        <p id="price">Harga</p>
-                                        <p id="desc">Deskripsi</p>
-                                        <div class="single-product-form">
-                                            <form action="post" for="select" class="d-none">
-                                                <input type="number" placeholder="0" id="select" value="1">
-                                            </form>
-                                            <button class="cart-btn btn btn-success mt-2 mb-3" type="button" id="add-button">Keranjang</button>
-                                            
+                                        <h3 x-text="detailData.name">Judul</h3>
+                                        <p x-text="detailData.price">Harga</p>
+                                        <p x-text="detailData.description">Deskripsi</p>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" :href="`./cart.html?id=${detailData.ID}`">Keranjang</a></div>
                                         </div>
-                                        <!-- <h4>Share:</h4>
-                                        <ul class="product-share">
-                                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-                                            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
-                                        </ul> -->
+                                        
                                     </div>
                                 </div>
                             </div>

@@ -65,11 +65,13 @@
                 </div>
             </div>
         </header>
-        <ul class="list-group list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Cras justo odio</li>
-        </ul>
+        <div x-data="getProfile()" x-init="apiGet()">
+            <ul class="list-group list-group">
+                <li class="list-group-item" x-text="profileDt.costumer_name"></li>
+                <li class="list-group-item" x-text="profileDt.phone_number"></li>
+                <li class="list-group-item" x-text="profileDt.address"></li>
+            </ul>
+        </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>

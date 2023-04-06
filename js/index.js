@@ -22,24 +22,34 @@ function getData(){
 
 // Detail ke halaman ./single.html
 let prodId = new URLSearchParams(location.search).get('id')
-function getDetail(id){
-    return api.get(`product/${id}`)
-        .then(res =>{
-            $('#title').text(res.data.data.name)
-            $('#price').text(res.data.data.price)
-            $('#desc').text(res.data.data.description)
-            // return res.data.data
-            // console.log(res.data.data)
-        })
+function getDetail(){
+    return{
+        detailData: [],
+        apiGet(id){
+            return api.get(`product/${id}`)
+                .then(res => {
+                    this.detailData = res.data.data;
+                    // console.log(profileDt)
+                })
+        }
+    }
 }
 
 // Get Profile
-api.get('costumer/1')
-    .then(res =>{
-        console.log(res.data.data)
-    })
 
-
+function getProfile(){
+        return{
+            profileDt: [],
+            apiGet(){
+                return api.get('costumer/1')
+                    .then(res => {
+                        this.profileDt = res.data.data;
+                        // console.log(profileDt)
+                    })
+            }
+        }
+}
+    
 /*
 function detailProd(product){
     location.href = `#product-${product.ID}`;
