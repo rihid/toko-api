@@ -301,6 +301,32 @@ func main() {
 		})
 	})
 
+	app.Delete("/transaksion/:id", func(c *fiber.Ctx) error {
+		id, err := strconv.Atoi(c.Params("id"))
+		if err != nil {
+			return c.Status(http.StatusBadRequest).JSON(fiber.Map{
+				"success": false,
+				"message": err.Error(),
+				"data":    nil,
+			})
+		}
+
+		result := DB.Delete(&Transaksion{}, id)
+		if result.RowsAffected != 0 {
+			return c.JSON(fiber.Map{
+				"success": true,
+				"message": "",
+				"data":    nil,
+			})
+		}
+
+		return c.Status(http.StatusNotFound).JSON(fiber.Map{
+			"success": false,
+			"message": fmt.Sprintf("Item with ID %d not found", id),
+			"data":    nil,
+		})
+	})
+
 	app.Put("/product/:id", func(c *fiber.Ctx) error {
 		id, err := strconv.Atoi(c.Params("id"))
 		if err != nil {
