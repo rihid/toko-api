@@ -49,19 +49,17 @@ function getProfile(){
             }
         }
 }
-    
-/*
-function detailProd(product){
-    location.href = `#product-${product.ID}`;
-   $('#detail').attr('x-show', `page === '#product-${product.ID}'`);
-   $('#prod-name').text(`${product.name}`)
-   $('#price').text(`${product.price}`)
-   $('#desc').text(`${product.description}`)
 
-   $('#cart-btn').on('click', function(evt){
-    evt.preventDefault()
-    console.log(evt)
-   })
-    
+// Get Transaction
+function getTransaction(){
+    return{
+        transactionDt: [],
+        apiGet(){
+            return api.get('transaksion/')
+                .then(res => {
+                    this.transactionDt = res.data.data;
+                    console.log(res.data.data)
+                })
+        }
+    }
 }
-*/

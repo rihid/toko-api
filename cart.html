@@ -49,6 +49,14 @@
         </header>
         <!-- Section-->
         <section class="py-5">
+          <!-- Tes data -->
+          <div x-data="getTransaction()" x-init="apiGet()">
+            <template x-for="cart in transactionDt" :key="cart.ID">
+              <ul>
+                <li x-text="cart.Costumer.costumer_name">Halo</li>
+              </ul>
+            </template>
+          </div>
             <div class="container my-5">
                 <div class="row"> 
                   <div class="col-lg-9">
