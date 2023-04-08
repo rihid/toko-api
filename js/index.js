@@ -65,8 +65,6 @@ function getTransaction(){
         getTotal(){
             return api.get('transaksion/')
                 .then(res => {
-                    console.log(res.data.data)
-                    
                     res.data.data.forEach( arr => {
                         this.totalDt += arr.Product.price;
                     })
@@ -74,5 +72,27 @@ function getTransaction(){
         }
     }
 }
+// Post Transaksion
+function postTr(id){
+    return api.post('transaksion/', {
+        product_id: id,
+        costumer_id: 1,
+        total: 0
+    })
+    .then( res => {
+        $('#info-alert').css('display', 'block')
+        console.log(res)
+    })
+    // console.log(id)
+}
 
+// Delete Cart
+function delProd(id){
+    return api.delete(`transaksion/${id}`)
+        .then(res => {
+            location.reload();
+            console.log(res)
+        })
+    // console.log(id)
+}
 
