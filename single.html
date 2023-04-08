@@ -53,11 +53,14 @@
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <!-- single product -->
                     <div class="single-product mt-150 mb-150" x-data="getDetail()" x-init="apiGet(prodId)">
+                        <div class="alert alert-info" role="alert" id="info-alert" style="display:none;">
+                            Data berhasil ditambahkan
+                        </div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="single-product-img">
-                                        <img src="" alt="Gambar Produk">
+                                    <div class="">
+                                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar Produk" class="img-thumbnail">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -68,7 +71,7 @@
                                         <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div class="text-center"><a class="btn btn-outline-primary mt-auto" :href="`./cart.html?id=${detailData.ID}`">Keranjang</a></div>
                                         </div> -->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="postTr(detailData.ID)">
                                             <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="">Keranjang</a></div>
                                         </div>
                                         
