@@ -54,12 +54,25 @@ function getProfile(){
 function getTransaction(){
     return{
         transactionDt: [],
+        totalDt: 0,
         apiGet(){
             return api.get('transaksion/')
                 .then(res => {
                     this.transactionDt = res.data.data;
+                    // console.log(res.data.data)
+                })
+        },
+        getTotal(){
+            return api.get('transaksion/')
+                .then(res => {
                     console.log(res.data.data)
+                    
+                    res.data.data.forEach( arr => {
+                        this.totalDt += arr.Product.price;
+                    })
                 })
         }
     }
 }
+
+

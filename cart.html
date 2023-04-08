@@ -48,79 +48,93 @@
             </div>
         </header>
         <!-- Section-->
-        <section class="py-5">
-          <!-- Tes data -->
-          <div x-data="getTransaction()" x-init="apiGet()">
-            <template x-for="cart in transactionDt" :key="cart.ID">
-              <ul>
-                <li x-text="cart.Costumer.costumer_name">Halo</li>
-              </ul>
-            </template>
-          </div>
-            <div class="container my-5">
-                <div class="row"> 
-                  <div class="col-lg-9">
-                    <div class="card">
-                      <div class="card-body"> 
-                        <h5 class="card-title mb-4">Keranjang</h5> 
-                        <div class="card mb-4 border-0 product-item" data-index="{{product.id}}">
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <div class="itemside me-lg-5 d-flex flex-row"> 
-                                <div class="aside">
-                                  <img src="" class="img-sm border rounded">
-                                </div> 
-                                <div class="info"> 
-                                  <a href="" class="title mb-1">Nama Produk</a> 
-                                  <p class="text-muted small">Deskripsi</p> 
-                                </div> 
-                              </div>
-                            </div> 
-                            <div class="col-lg-4 col-sm-4 col-6"> 
-                              <div class="price-wrap lh-sm"> 
-                                <var class="price h6">harga</var> 
-                              </div> <!-- price-wrap .// --> 
-                            </div> 
-                            <div class="col-lg col-sm-4">
-                              <div class="card-body p-1">
-                                <!-- <label for="select" class="d-none">Qty</label> -->
-                                <select id="select{{product.id}}" class="d-none">
-                                  <option value="" selected disabled hidden>{{item.qty}}</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                </select>
-                                <a type="button" id="delete-button" data-index="{{product.id}}"
-                                  class="delete-button text-decoration-none small"><i class="fas fa-trash-alt"></i></a>
+        <!-- cart + summary -->
+        <section class=" my-5">
+          <div class="container">
+            <div class="row">
+              <!-- cart -->
+              <div class="col-lg-9">
+                <div class="card border shadow-0">
+                  <div class="m-4" x-data="getTransaction()" x-init="apiGet()">
+                    <h4 class="card-title mb-4">Keranjang</h4>
+                    <template x-for="cart in transactionDt" :key="cart.ID">
+                      <div class="row gy-3 mb-4">
+                        <div class="col-lg-5">
+                          <div class="me-lg-5">
+                            <div class="d-flex">
+                              <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/11.webp" class="border rounded me-3" style="width: 96px; height: 96px;" />
+                              <div class="">
+                                <a href="#" class="nav-link" x-text="cart.Product.name">Product Name</a>
+                                <p class="text-muted" x-text="cart.Product.description">Description</p>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div> <!-- card-body .// -->
-                      <div class="card-body border-top"> 
-                        <p class="mb-0"><i class="me-2 text-success fa fa-truck"></i> Pengiriman ke manapun</p>
-                      </div> <!-- card-body.// -->
-                    </div> <!-- card.// --> 
-                  </div> <!-- col.// --> 
-                  
-                  <aside class="col-lg-3"> 
-                    <div class="card"> 
-                      <div class="card-body"> 
-                        <div class="alert alert-warning" role="alert">
-                          <span class="mr-1"><i class="fas fa-info-circle"></i></span>
-                          Setelah menekan tombol pesan, anda akan diarahkan ke Whatsapp dan akan dilayani admin untuk detail pemesanan selanjutnya.
-                        </div> 
-                        <hr> 
-                        <div class="d-grid gap-2 my-3"> 
-                          <a href="#" class="btn btn-success w-100 mb-2"> Pesan Melalui Whatsapp </a> 
-                          <a href="#" class="btn btn-light w-100"> Kembali Ke Produk </a> 
-                        </div> 
-                      </div> <!-- card-body.// --> 
-                    </div> <!-- card.// --> 
-                  </aside> <!-- col.// -->
-                 
+                        <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
+                          <div class="">
+                            <select style="width: 100px;" class="form-select me-4">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                          <div class="">
+                            <span class="h6" x-text="cart.Product.price">harga</span>
+                            
+                          </div>
+                        </div>
+                        <div class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
+                          <div class="float-md-end">
+                            <a href="#" class="btn btn-light border text-danger icon-hover-danger"> Hapus</a>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+
+                  <div class="border-top pt-4 mx-4 mb-4">
+                    <p><i class="fas fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
+                    <p class="text-muted">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                  </div>
                 </div>
-              </div>              
+              </div>
+              <!-- cart -->
+              <!-- summary -->
+              
+              <div class="col-lg-3">
+                <div class="card shadow-0 border" x-data="getTransaction()" x-init="getTotal()">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Total price:</p>
+                      <p class="mb-2" x-text="totalDt">$329.00</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Discount:</p>
+                      <p class="mb-2 text-success">-$00.00</p>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Total price:</p>
+                      <p class="mb-2 fw-bold">$283.00</p>
+                    </div>
+
+                    <div class="mt-3">
+                      <a href="#" class="btn btn-success w-100 shadow-0 mb-2"> Checkout </a>
+                      <a href="./index.html" class="btn btn-light w-100 border mt-2"> Ke Beranda </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- summary -->
+            </div>
+          </div>
         </section>
+<!-- cart + summary -->
+<section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
