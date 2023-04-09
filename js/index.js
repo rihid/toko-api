@@ -112,11 +112,6 @@ function delProd(id){
     // console.log(id)
 }
 
-// var obj = { a: 'test1', b: 'test2' };
-// if (Object.values(obj).indexOf('test1') > -1) {
-//    console.log('has test1');
-// }
-
 // Register Post Data
 const form = document.querySelector('#post-form')
 form.addEventListener('submit', function(e){
