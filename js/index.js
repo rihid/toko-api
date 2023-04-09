@@ -52,6 +52,7 @@ function getProfile(){
 
 // Edit data diri
 function updateData(id){
+    // console.log(id)
     const form = document.querySelector('#update-form');
     let formData = new FormData(form)
     
