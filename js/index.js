@@ -99,6 +99,7 @@ function postTr(id){
         .then( res => {
             // $('#info-alert').css('display', 'block')
             console.log(res.data.data.product_id)
+            location.reload()
         })
 }
 
