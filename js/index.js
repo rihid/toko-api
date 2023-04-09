@@ -7,6 +7,25 @@ const api = axios.create({
     baseURL: "http://127.0.0.1:8080"
 });
 
+// Register Post Data
+const form = document.querySelector('#post-form')
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let formData = new FormData(form)
+
+    api.post('costumer/', formData)
+    .then(res => {
+        if(res.status == 200){
+            document.querySelector('#success-info').style = "block";
+        }else{
+            document.querySelector('#failed-info').style = "block";
+        }
+        console.log(res)
+    })
+    .catch(err => err);
+        
+});
+
 // Get all data
 function getData(){
     return{
@@ -52,7 +71,6 @@ function getProfile(){
 
 // Edit data diri
 function updateData(id){
-    // console.log(id)
     const form = document.querySelector('#update-form');
     let formData = new FormData(form)
     
