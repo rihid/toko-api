@@ -71,6 +71,47 @@
                 <li class="list-group-item" x-text="profileDt.phone_number"></li>
                 <li class="list-group-item" x-text="profileDt.address"></li>
             </ul>
+            <!-- Modal Edit -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Edit
+            </button>
+  
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Edit Data Diri</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="update-form">
+                                
+                                <div class="mb-3">
+                                  <label for="" class="form-label">Nama</label>
+                                  <input type="text" class="form-control" id="" name="costumer_name" :value="profileDt.costumer_name">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="" class="form-label">Nomor HP</label>
+                                  <input type="text" class="form-control" id="" name="phone_number" :value="profileDt.phone_number">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="" class="form-label">Alamat</label>
+                                  <textarea class="form-control" id="" style="height: 100px" name="address" :value="profileDt.address"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" @click.prevent="updateData(profileDt.ID)">Submit</button>
+                                </div>
+                              </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+  
+            <!-- /Modal Edit -->
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">

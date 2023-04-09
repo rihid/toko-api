@@ -50,6 +50,20 @@ function getProfile(){
         }
 }
 
+// Edit data diri
+function updateData(id){
+    // console.log(id)
+    const form = document.querySelector('#update-form');
+    let formData = new FormData(form)
+    
+    api.put(`costumer/${id}`, formData)
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => err);
+    
+}
+
 // Get Transaction
 function getTransaction(){
     return{
@@ -72,17 +86,17 @@ function getTransaction(){
         }
     }
 }
-// Post Transaksion
+// Post Transaction
 function postTr(id){
     return api.post('transaksion/', {
         product_id: id,
         costumer_id: 1,
         total: 0
     })
-    .then( res => {
-        $('#info-alert').css('display', 'block')
-        console.log(res)
-    })
+        .then( res => {
+            $('#info-alert').css('display', 'block')
+            console.log(res)
+        })
     // console.log(id)
 }
 
