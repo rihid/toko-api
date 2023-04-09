@@ -7,25 +7,6 @@ const api = axios.create({
     baseURL: "http://127.0.0.1:8080"
 });
 
-// Register Post Data
-const form = document.querySelector('#post-form')
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    let formData = new FormData(form)
-
-    api.post('costumer/', formData)
-    .then(res => {
-        if(res.status == 200){
-            document.querySelector('#success-info').style = "block";
-        }else{
-            document.querySelector('#failed-info').style = "block";
-        }
-        console.log(res)
-    })
-    .catch(err => err);
-        
-});
-
 // Get all data
 function getData(){
     return{
@@ -41,6 +22,7 @@ function getData(){
 
 // Detail ke halaman ./single.html
 let prodId = new URLSearchParams(location.search).get('id')
+console.log(prodId)
 function getDetail(){
     return{
         detailData: [],
@@ -127,4 +109,28 @@ function delProd(id){
         })
     // console.log(id)
 }
+
+
+
+
+
+
+// Register Post Data
+const form = document.querySelector('#post-form')
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let formData = new FormData(form)
+
+    api.post('costumer/', formData)
+    .then(res => {
+        if(res.status == 200){
+            document.querySelector('#success-info').style = "block";
+        }else{
+            document.querySelector('#failed-info').style = "block";
+        }
+        console.log(res)
+    })
+    .catch(err => err);
+        
+});
 
