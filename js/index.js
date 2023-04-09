@@ -7,25 +7,6 @@ const api = axios.create({
     baseURL: "http://127.0.0.1:8080"
 });
 
-// Register Post Data
-const form = document.querySelector('#post-form')
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    let formData = new FormData(form)
-
-    api.post('costumer/', formData)
-    .then(res => {
-        if(res.status == 200){
-            document.querySelector('#success-info').style = "block";
-        }else{
-            document.querySelector('#failed-info').style = "block";
-        }
-        console.log(res)
-    })
-    .catch(err => err);
-        
-});
-
 // Get all data
 function getData(){
     return{
@@ -82,16 +63,19 @@ function updateData(id){
     
 }
 
+
 // Get Transaction
 function getTransaction(){
     return{
         transactionDt: [],
         totalDt: 0,
+        cartnum: 0,
         apiGet(){
             return api.get('transaksion/')
                 .then(res => {
                     this.transactionDt = res.data.data;
-                    // console.log(res.data.data)
+                    this.cartnum = res.data.data.length;
+                    console.log(res.data.data.length)
                 })
         },
         getTotal(){
@@ -109,13 +93,12 @@ function postTr(id){
     return api.post('transaksion/', {
         product_id: id,
         costumer_id: 1,
-        total: 0
+        total: 0,
     })
         .then( res => {
-            $('#info-alert').css('display', 'block')
-            console.log(res)
+            // $('#info-alert').css('display', 'block')
+            console.log(res.data.data.product_id)
         })
-    // console.log(id)
 }
 
 // Delete Cart
@@ -127,4 +110,31 @@ function delProd(id){
         })
     // console.log(id)
 }
+
+// var obj = { a: 'test1', b: 'test2' };
+// if (Object.values(obj).indexOf('test1') > -1) {
+//    console.log('has test1');
+// }
+
+// Register Post Data
+const form = document.querySelector('#post-form')
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    let formData = new FormData(form)
+
+    api.post('costumer/', formData)
+    .then(res => {
+        if(res.status == 200){
+            document.querySelector('#success-info').style = "block";
+            // location.href = "./index.html";
+        }else{
+            document.querySelector('#failed-info').style = "block";
+        }
+        console.log(res)
+    })
+    .catch(err => err);
+        
+});
+
+
 
