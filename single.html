@@ -21,20 +21,25 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="./index.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="./index.html">Toko Udin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./profil.html">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Home</a></li>
                     </ul>
-                    <form class="d-flex">
-                        <a href="./cart.html" class="btn btn-outline-dark" type="button">
+                    <div class="d-flex my-2 me-2">
+                        <a href="./profil.html" class="btn btn-outline-dark" type="button">
+                            <i class="bi bi-person-fill"></i>
+                            Akun
+                        </a>
+                    </div>
+                    <div class="d-flex">
+                        <a href="./cart.html" class="btn btn-outline-dark" type="button" x-data="getTransaction()" x-init="apiGet()">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" x-text="cartnum"></span>
                         </a>
-                    </form>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -42,46 +47,42 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <h1 class="display-4 fw-bolder">Halaman Detail</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">tampil trendy tidak harus murah</p>
                 </div>
             </div>
         </header>
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <!-- single product -->
-                    <div class="single-product mt-150 mb-150" x-data="getDetail()" x-init="apiGet(prodId)">
-                        <div class="alert alert-info" role="alert" id="info-alert" style="display:none;">
-                            Data berhasil ditambahkan
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="">
-                                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar Produk" class="img-thumbnail">
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="single-product-content">
-                                        <h3 x-text="detailData.name">Judul</h3>
-                                        <p x-text="detailData.price">Harga</p>
-                                        <p x-text="detailData.description">Deskripsi</p>
-                                        <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" :href="`./cart.html?id=${detailData.ID}`">Keranjang</a></div>
-                                        </div> -->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="postTr(detailData.ID)">
-                                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="">Keranjang</a></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="container"  x-data="getDetail()" x-init="apiGet(prodId)">
+              <div class="row gx-5">
+                <aside class="col-lg-6">
+                  <div class="border rounded-4 mb-3 d-flex justify-content-center">
+                    <a data-fslightbox="mygalley" class="rounded-4" target=" data-type="image" href="">
+                      <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" />
+                    </a>
+                  </div>
+                </aside>
+                <main class="col-lg-6">
+                  <div class="ps-lg-3">
+                    <h3 class="title text-dark" x-text="detailData.name">
+                      Judul
+                    </h3>
+          
+                    <div class="mb-3">
+                      <p class="h5" x-text="detailData.price">Rp. <span>1</span></p>
                     </div>
-                    <!-- end single product -->
-                </div>
+          
+                    <p x-text="detailData.description"> 
+                      Description
+                    </p>
+                    <hr /> 
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="postTr(detailData.ID)">
+                        <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="">Keranjang</a></div>
+                    </div>
+                  </div>
+                </main>
+              </div>
             </div>
         </section>
         <!-- Footer-->

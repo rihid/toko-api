@@ -53,6 +53,7 @@ function getProfile(){
 
 // Edit data diri
 function updateData(id){
+    // console.log(id)
     const form = document.querySelector('#update-form');
     let formData = new FormData(form)
     
@@ -64,16 +65,19 @@ function updateData(id){
     
 }
 
+
 // Get Transaction
 function getTransaction(){
     return{
         transactionDt: [],
         totalDt: 0,
+        cartnum: 0,
         apiGet(){
             return api.get('transaksion/')
                 .then(res => {
                     this.transactionDt = res.data.data;
-                    // console.log(res.data.data)
+                    this.cartnum = res.data.data.length;
+                    console.log(res.data.data.length)
                 })
         },
         getTotal(){
@@ -91,13 +95,13 @@ function postTr(id){
     return api.post('transaksion/', {
         product_id: id,
         costumer_id: 1,
-        total: 0
+        total: 0,
     })
         .then( res => {
-            $('#info-alert').css('display', 'block')
-            console.log(res)
+            // $('#info-alert').css('display', 'block')
+            console.log(res.data.data.product_id)
+            location.reload()
         })
-    // console.log(id)
 }
 
 // Delete Cart

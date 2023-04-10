@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Toko Sepatu</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -21,20 +21,25 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="./index.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="./index.html">Toko Udin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Home</a></li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="d-flex my-2 me-2">
+                        <a href="./profil.html" class="btn btn-outline-dark" type="button">
+                            <i class="bi bi-person-fill"></i>
+                            Akun
+                        </a>
+                    </div>
+                    <div class="d-flex">
+                        <a href="./cart.html" class="btn btn-outline-dark" type="button" x-data="getTransaction()" x-init="apiGet()">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" x-text="cartnum"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -60,59 +65,99 @@
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <h1 class="display-4 fw-bolder">Halaman Profile</h1>
                     <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
                 </div>
             </div>
         </header>
-        <div x-data="getProfile()" x-init="apiGet()">
-            <ul class="list-group list-group">
-                <li class="list-group-item" x-text="profileDt.costumer_name"></li>
-                <li class="list-group-item" x-text="profileDt.phone_number"></li>
-                <li class="list-group-item" x-text="profileDt.address"></li>
-            </ul>
-            <!-- Modal Edit -->
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Edit
-            </button>
-  
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Edit Data Diri</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="update-form">
-                                
-                                <div class="mb-3">
-                                  <label for="" class="form-label">Nama</label>
-                                  <input type="text" class="form-control" id="" name="costumer_name" :value="profileDt.costumer_name">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="" class="form-label">Nomor HP</label>
-                                  <input type="text" class="form-control" id="" name="phone_number" :value="profileDt.phone_number">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="" class="form-label">Alamat</label>
-                                  <textarea class="form-control" id="" style="height: 100px" name="address" :value="profileDt.address"></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" @click.prevent="updateData(profileDt.ID)">Submit</button>
-                                </div>
-                              </form>
-                        </div>
-                        
+
+
+        <section style="background-color: #eee;">
+            <div class="container py-5" x-data="getProfile()" x-init="apiGet()">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card mb-4">
+                    <div class="card-body text-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                      <h5 class="my-3" x-text="profileDt.costumer_name"></h5>
                     </div>
+                  </div>
                 </div>
-            </div>
-  
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <p class="mb-0">Nama</p>
+                            </div>
+                            <div class="col-sm-9">
+                            <p class="text-muted mb-0" x-text="profileDt.costumer_name"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <p class="mb-0">Telepon</p>
+                            </div>
+                            <div class="col-sm-9">
+                            <p class="text-muted mb-0" x-text="profileDt.phone_number"></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <p class="mb-0">Alamat</p>
+                            </div>
+                            <div class="col-sm-9">
+                            <p class="text-muted mb-0" x-text="profileDt.address"></p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Edit Profile
+                    </button>
+        
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Edit Data Diri</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="update-form">
+                                        
+                                        <div class="mb-3">
+                                        <label for="" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="" name="costumer_name" :value="profileDt.costumer_name">
+                                        </div>
+                                        <div class="mb-3">
+                                        <label for="" class="form-label">Nomor HP</label>
+                                        <input type="text" class="form-control" id="" name="phone_number" :value="profileDt.phone_number">
+                                        </div>
+                                        <div class="mb-3">
+                                        <label for="" class="form-label">Alamat</label>
+                                        <textarea class="form-control" id="" style="height: 100px" name="address" :value="profileDt.address"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" @click.prevent="updateData(profileDt.ID)">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
             <!-- /Modal Edit -->
-        </div>
+                </div>
+              </div>
+            </div>
+        </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
