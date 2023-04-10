@@ -4,7 +4,7 @@
 // Fetch APi
 // Axios Config
 const api = axios.create({
-    baseURL: "http://127.0.0.1:8080"
+    baseURL: "https://rest-api-golang-production.up.railway.app/"
 });
 
 // Get all data
