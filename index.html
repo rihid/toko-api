@@ -24,7 +24,7 @@
         <!-- Navigation-->
         <nav  class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="./index.html">Toko Udin</a>
+                <a class="navbar-brand" style=" color: black; font-family: Cursive; font-weight: bold;"  href="./index.html">Toko Udin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -63,19 +63,19 @@
           <div class="carousel-item active" style="background-image:url('img/sp-1.jpeg')">
             <div class="container">
                <h2>Sepesial Menjelang Lebaran Promo 20%</h2>
-               <p>Mulai Tanggal 10 April 2023</p>
+               <p style="font-family: Cursive;" >Mulai Tanggal 10 April 2023</p>
             </div>
           </div>
           <div class="carousel-item" style="background-image:url('img/sp-2.jpeg')">
             <div class="container">
                <h2>Sepatu Olahraga</h2>
-               <p>Silhakan Berbelanja</p>
+               <p style="font-family: Cursive;">Silhakan Berbelanja</p>
             </div>
           </div>
           <div class="carousel-item" style="background-image:url('img/sp-3.jpg')">
             <div class="container">
                <h2>Nike</h2>
-               <p>Model Terbaru</p>
+               <p style="font-family: Cursive;">Model  Nike Terbaru</p>
             </div>
           </div>
         </div>
@@ -84,44 +84,40 @@
 
   <!-- Carousel wrapper -->
 
-        <section class="py-5">
-            <div class="row justify-content text-center">
-                <div class="col-lg-12">
-                  <div class="main_title">
-                    <h2><span style=" flex-direction: row-reverse; color: rgb(6, 6, 5);">Semua Produk Sepatu</span></h2>
-                    <p></p>
+        <section>
+          <div class="container my-5">
+            <header class="mb-4">
+              <h3>Recommended items</h3>
+            </header>
+        
+            <div class="row" x-data="getData()" x-init="fromApi()">
+              <template x-for="product in prodDatas" :key="product.ID">
+                <div class="col-lg-3 col-md-6 col-sm-6 my-3">
+                  <div class="card px-4 border shadow-0 mb-4 mb-lg-0">
+                    <div class="mask px-2" style="height: 50px;">
+                      <div class="d-flex justify-content-between">
+                        <!-- <h6><span class="badge bg-danger pt-1 mt-3 ms-2">New</span></h6> -->
+                        <a href="#"><i class="fas fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
+                      </div>
+                    </div>
+                    <a href="#" class="">
+                      <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/7.webp" class="card-img-top rounded-2" />
+                    </a>
+                    <div class="card-body d-flex flex-column pt-3 border-top">
+                      <a href="#" class="nav-link" x-text="product.name">Gaming Headset with Mic</a>
+                      <div class="price-wrap mb-2">
+                        <strong class="" x-text="product.price">$18.95</strong>
+                        <del class="">$24.99</del>
+                      </div>
+                      <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
+                        <a :href="`./single.html?id=${product.ID}`" class="btn btn-outline-primary w-100">Detail</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" x-data="getData()" x-init="fromApi()">
-                        <template x-for="product in prodDatas" :key="product.ID">
-                            <div class="col mb-5">
-                                    <div class="card h-100">
-                                        <!-- Product image-->
-                                        <img class="card-img-top" src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Gambar" />
-                                        <!-- Product details-->
-
-                                        <div class="card-body p-4">
-                                            <div class="text-center">
-                                                <!-- Product name-->
-                                                <h5 class="fw-bolder" x-text="product.name">Fancy Product</h5>
-                                                <!-- Product price-->
-                                                <span x-text="`Rp.${product.price}`">
-                                                    
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <!-- Product actions-->
-                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                            <div class="text-center"><a class="btn btn-outline-primary mt-auto" :href="`./single.html?id=${product.ID}`">Detail</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </template>
-                    </div>
-                </div>
+              </template>
             </div>
+          </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
