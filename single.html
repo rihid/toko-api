@@ -70,15 +70,15 @@
                     </h3>
           
                     <div class="mb-3">
-                      <p class="h5" x-text="detailData.price">Rp. <span>1</span></p>
+                      <p class="h5">Rp. <span x-text="detailData.price">1</span></p>
                     </div>
           
                     <p x-text="detailData.description"> 
                       Description
                     </p>
                     <hr /> 
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" @click.prevent="postTr(detailData.ID)">
-                        <div class="text-center"><a class="btn btn-outline-primary mt-auto" href="">Keranjang</a></div>
+                    <div class="card-footer pt-0 border-top-0 bg-transparent" @click.prevent="postTr(detailData.ID)">
+                        <div class=""><a class="btn btn-outline-primary mt-auto" href="">Keranjang</a></div>
                     </div>
                   </div>
                 </main>

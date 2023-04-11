@@ -22,24 +22,29 @@
     </head>
     <body>  
         <!-- Navigation-->
-        <nav  class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="./index.html">Toko Udin</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./profil.html">Profile</a></li>
-                    </ul>
-                    <form class="d-flex">
-                        <a href="./cart.html" class="btn btn-outline-dark" type="button">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </a>
-                    </form>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container px-4 px-lg-5">
+              <a class="navbar-brand" href="./index.html">Toko Udin</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                      <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Home</a></li>
+                  </ul>
+                  <div class="d-flex my-2 me-2">
+                      <a href="./profil.html" class="btn btn-outline-dark" type="button">
+                          <i class="bi bi-person-fill"></i>
+                          Akun
+                      </a>
+                  </div>
+                  <div class="d-flex">
+                      <a href="./cart.html" class="btn btn-outline-dark" type="button" x-data="getTransaction()" x-init="apiGet()">
+                          <i class="bi-cart-fill me-1"></i>
+                          Cart
+                          <span class="badge bg-dark text-white ms-1 rounded-pill" x-text="cartnum"></span>
+                      </a>
+                  </div>
+              </div>
+          </div>
         </nav>
 
     <!-- Carousel wrapper -->

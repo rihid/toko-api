@@ -4,7 +4,7 @@
 // Fetch APi
 // Axios Config
 const api = axios.create({
-    baseURL: "https://rest-api-golang-production.up.railway.app/"
+    baseURL: "http://127.0.0.1:8080"
 });
 
 // Get all data
@@ -55,6 +55,7 @@ function updateData(id){
     // console.log(id)
     const form = document.querySelector('#update-form');
     let formData = new FormData(form)
+    console.log(formData)
     
     api.put(`costumer/${id}`, formData)
     .then(res => {
