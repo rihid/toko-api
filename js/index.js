@@ -42,7 +42,7 @@ function getProfile(){
         return{
             profileDt: [],
             apiGet(){
-                return api.get('costumer/1')
+                return api.get('costumer/2')
                     .then(res => {
                         this.profileDt = res.data.data;
                         // console.log(profileDt)
@@ -52,17 +52,52 @@ function getProfile(){
 }
 
 // Edit data diri
-function updateData(id){
-    // console.log(id)
-    const form = document.querySelector('#update-form');
-    let formData = new FormData(form)
-    
-    api.put(`costumer/${id}`, formData)
-    .then(res => {
-        console.log(res)
+
+function dataEdit(data){
+    // Menambahkan atribut value
+    $('#name-edit').attr('value', `${data.costumer_name}`)
+    $('#phone-edit').attr('value', `${data.phone_number}`)
+    $('#address-edit').text(`${data.address}`)
+
+    // Mendapatkan data object awal
+    let nameEdit = `${data.costumer_name}`;
+    let phoneEdit = `${data.phone_number}`;
+    let addrEdit = `${data.address}`;
+
+    // perubahan onkeyup
+    $('#name-edit').on('keyup', function(evt){
+        nameEdit = evt.target.value;
+        // console.log(nameEdit)
     })
-    .catch(err => err);
-    
+
+    $('#phone-edit').on('keyup', function(evt){
+        phoneEdit = evt.target.value;
+        // console.log(phoneEdit)
+        
+    })
+
+    $('#address-edit').on('keyup', function(evt){
+        addrEdit = evt.target.value;
+        // console.log(addrEdit)
+    })
+
+    $('#update-form').on('submit', evt => {
+        evt.preventDefault();
+        let editObj = {
+            costumer_name: nameEdit,
+            phone_number: phoneEdit,
+            address: addrEdit,
+        }
+        // console.log(editObj)
+
+        api.put(`costumer/${data.ID}`, editObj)
+        .then(res => {
+            console.log(res)
+            location.reload()
+        })
+        .catch(err => err);
+
+    })
 }
 
 
@@ -120,6 +155,8 @@ function delProd(id){
 
 
 // Register Post Data
+
+/*
 const form = document.querySelector('#post-form')
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -137,4 +174,47 @@ form.addEventListener('submit', function(e){
     .catch(err => err);
         
 });
+*/
+
+// Post Data Register
+
+let nameReg = '';
+let phoneReg = '';
+let addrReg = '';
+// let formObj = {};
+
+$('#name').on('keyup', function(evt){
+    nameReg = evt.target.value;
+})
+
+$('#phone').on('keyup', function(evt){
+    phoneReg = evt.target.value;
+})
+
+$('#address').on('keyup', function(evt){
+    addrReg = evt.target.value;
+})
+
+$('#post-form').on('submit', evt =>{
+    evt.preventDefault();
+    let formObj = {
+        costumer_name: nameReg,
+        phone_number: phoneReg,
+        address: addrReg,
+    }
+
+    api.post('costumer/', formObj)
+    .then(res => {
+        if(res.status == 200){
+            document.querySelector('#success-info').style = "block";
+            // location.href = "./index.html";
+        }else{
+            document.querySelector('#failed-info').style = "block";
+        }
+        console.log(res)
+    })
+    .catch(err => err);
+
+})
+
 

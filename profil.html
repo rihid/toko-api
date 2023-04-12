@@ -43,30 +43,12 @@
                 </div>
             </div>
         </nav>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                ...
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-            </div>
-        </div>
-        <!-- Header-->
+
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Halaman Profile</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Tampil trendy dengan murah</p>
                 </div>
             </div>
         </header>
@@ -116,7 +98,7 @@
                         </div>
                     </div>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" @click="dataEdit(profileDt)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Edit Profile
                     </button>
         
@@ -130,22 +112,21 @@
                                 </div>
                                 <div class="modal-body">
                                     <form id="update-form">
-                                        
                                         <div class="mb-3">
                                         <label for="" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="" name="costumer_name" :value="profileDt.costumer_name">
+                                        <input id="name-edit" type="text" class="form-control" name="costumer_name"/>
                                         </div>
                                         <div class="mb-3">
                                         <label for="" class="form-label">Nomor HP</label>
-                                        <input type="text" class="form-control" id="" name="phone_number" :value="profileDt.phone_number">
+                                        <input type="text" class="form-control" id="phone-edit" name="phone_number" >
                                         </div>
                                         <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
-                                        <textarea class="form-control" id="" style="height: 100px" name="address" :value="profileDt.address"></textarea>
+                                        <textarea class="form-control" id="address-edit" style="height: 100px" name="address" ></textarea>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary" @click.prevent="updateData(profileDt.ID)">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
